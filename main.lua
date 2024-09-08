@@ -152,6 +152,7 @@ function enemySpawn()
         enemy.x = math.random(0, windowWidth - enemyimg:getWidth())
         enemy.y = -enemyimg:getHeight()
         table.insert(enemies, enemy)
+end
 
 function collisionCheck()
                 -- 플레이어와 적의 충돌 감지
