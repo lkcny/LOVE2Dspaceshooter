@@ -1,5 +1,3 @@
-local windowWidth
-local windowHeight
 local bulletimg
 local spaceimg
 local catimg
@@ -9,7 +7,7 @@ local speed = 200
 local timer = 1
 local bulletTimer = 0.5
 local score = 0
-local killCount = 0
+local difficulty = 0
 
 
 
@@ -77,7 +75,7 @@ function love.update(dt)
                         bullet.y = y
                         if bulletTimer <= 0 then
                                 table.insert(bullets, bullet)
-                                bulletTimer = 0.4
+                                bulletTimer = 0.3
                         end
                 end
         end
@@ -101,10 +99,16 @@ function love.update(dt)
 
         end
         -- 적 생성: 타이머
+        -- 시간에 따라 난이도가 올라가게 함
+        --
+        maxDifficulty = 24.5
+        if difficulty < maxDifficulty then
+                difficulty = difficulty + dt
+        end
         timer = timer - dt
         if timer <= 0 then
                 enemySpawn()
-                timer = 1 - killCount*0.05
+                timer = 1 - difficulty*0.04
         end
         
         -- 플레이어가 화면 밖으로 나가지 못하게 함: 플레이어 이미지의 좌표가 창의 x, y 좌표보다 클 경우 0으로 강제
@@ -170,7 +174,6 @@ function collisionCheck()
                                 table.remove(enemies, i)
                                 table.remove(bullets, j)
                                 score = score + 100
-                                killCount = killCount + 1
                                 love.audio.play(sparkSound)
                                 end
                         end
