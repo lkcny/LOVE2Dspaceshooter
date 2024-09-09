@@ -45,7 +45,7 @@ function love.load()
 
         spaceimg = love.graphics.newImage("spaceimg.png")
         catimg = love.graphics.newImage("cat.png")
-        bulletimg = love.graphics.newImage("bulletimg.png")
+        bulletimg = love.graphics.newImage("bullet8.png")
         enemyimg = love.graphics.newImage("enemy.png")
         deadimg = love.graphics.newImage("dead.png")
         playerVisible = true
