@@ -82,7 +82,7 @@ function love.update(dt)
                 if love.keyboard.isDown("z") then
                         love.audio.play(shootSound)
                         local bullet = {}
-                        bullet.x = x + catimg:getWidth()/2
+                        bullet.x = x + 7
                         bullet.y = y
                         if bulletTimer <= 0 then
                                 table.insert(bullets, bullet)
@@ -141,7 +141,7 @@ function love.update(dt)
         
         --점수가 bombCharge점 모일때마다 폭탄 추가
         if bombCharge > 5000 then
-                if bomb < 4 then
+                if bomb < 3 then
                         bomb = bomb + 1
                         bombCharge = bombCharge - 5000
                 end
