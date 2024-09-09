@@ -131,7 +131,7 @@ function love.update(dt)
         maxDifficulty = 24.5
         if difficulty < maxDifficulty then
                 difficulty = difficulty + dt
-                enemySpeed = enemySpeed + dt*2
+                enemySpeed = enemySpeed + dt*3
         end
         timer = timer - dt
         if timer <= 0 then
@@ -186,6 +186,10 @@ function love.draw()
 
         love.graphics.print("score:" .. score, love.graphics.getWidth() - 300, 10)
         love.graphics.print("BOMB:" .. bomb, love.graphics.getWidth() - 700, 10)
+
+        if not playerVisible then
+                love.graphics.print("GAME OVER!", windowWidth/2 - 100, windowHeight/2)
+        end
 
 end
 
