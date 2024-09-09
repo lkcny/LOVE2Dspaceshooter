@@ -15,6 +15,22 @@ local bombCharge = 0
 
 font = "arial"
 
+
+--폭탄 발사 콜백 함수
+function love.keyreleased(key)
+        if playerVisible then
+                if key == "space" then
+                        if bomb > 0 then
+                                bomb = bomb - 1
+                                love.audio.play(exploSound)
+                                score = score + #enemies*100
+                                while #enemies ~= 0 do rawset(enemies, #enemies, nil) end
+
+                        end
+                end
+        end
+end
+
 function love.load()
 
         --윈도우 타이틀
@@ -78,21 +94,6 @@ function love.update(dt)
                                 bulletTimer = 0.3
                         end
                 end
-                --폭탄 발사
-                function love.keyreleased(key)
-                        if playerVisible then
-                                if key == "space" then
-                                        if bomb > 0 then
-                                                bomb = bomb - 1
-                                                love.audio.play(exploSound)
-                                                score = score + #enemies*100
-                                                while #enemies ~= 0 do rawset(enemies, #enemies, nil) end
-
-                                        end
-                                end
-                        end
-                end
-
 
                 --치트
                 if love.keyboard.isDown("6") then
