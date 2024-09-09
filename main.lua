@@ -77,12 +77,15 @@ function love.update(dt)
                                 bulletTimer = 0.3
                         end
                 end
-                --치트: 난이도 즉시 최대
+                --치트
                 if love.keyboard.isDown("6") then
                         difficulty = maxDifficulty
                 end
                 if love.keyboard.isDown("7") then
                         enemySpeed = 5000
+                end
+                if love.keyboard.isDown("8") then
+                        bulletSpeed = 500
                 end
 
         end
