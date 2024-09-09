@@ -11,11 +11,6 @@ local difficulty = 0
 local bomb = 0
 local bombCharge = 0
 
-
-
-font = "arial"
-
-
 --폭탄 발사 콜백 함수
 function love.keyreleased(key)
         if playerVisible then
