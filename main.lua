@@ -140,10 +140,10 @@ function love.update(dt)
         end
         
         --점수가 bombCharge점 모일때마다 폭탄 추가
-        if bombCharge > 2000 then
+        if bombCharge > 5000 then
                 if bomb < 4 then
                         bomb = bomb + 1
-                        bombCharge = bombCharge - 2000
+                        bombCharge = bombCharge - 5000
                 end
         end
 
