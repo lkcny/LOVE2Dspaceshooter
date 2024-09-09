@@ -109,6 +109,7 @@ function love.update(dt)
         maxDifficulty = 24.5
         if difficulty < maxDifficulty then
                 difficulty = difficulty + dt
+                enemySpeed = enemySpeed + dt
         end
         timer = timer - dt
         if timer <= 0 then
