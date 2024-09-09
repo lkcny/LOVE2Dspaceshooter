@@ -14,3 +14,5 @@ https://arcadeisland.itch.io/space-shooter-wang-tiles
 https://bdragon1727.itch.io/free-effect-bullet-impact-explosion-32x32
 
 https://jdwasabi.itch.io/8-bit-16-bit-sound-effects-pack
+
+https://25349023.itch.io/pixel-bullet
