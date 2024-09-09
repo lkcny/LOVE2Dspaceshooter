@@ -95,8 +95,9 @@ function love.update(dt)
         end
 
         -- 적 생성
+        local enemySpeed = 0 
         for i, enemy in ipairs(enemies) do
-                local enemySpeed = 100
+                enemySpeed = 100
                 enemy.y = enemy.y + enemySpeed * dt
                 if enemy.y > love.graphics.getHeight() then
                         table.remove(enemies, i)
