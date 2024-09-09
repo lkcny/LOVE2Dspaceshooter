@@ -52,7 +52,6 @@ function love.load()
 end
 
 function love.update(dt)
-
         -- 화살표 키 입력으로 이미지 이동
         if playerVisible then
                 if love.keyboard.isDown("up") then
@@ -82,6 +81,9 @@ function love.update(dt)
                 if love.keyboard.isDown("6") then
                         difficulty = maxDifficulty
                 end
+                if love.keyboard.isDown("7") then
+                        enemySpeed = 5000
+                end
 
         end
 
@@ -97,7 +99,7 @@ function love.update(dt)
         -- 적 생성
         local enemySpeed = 0 
         for i, enemy in ipairs(enemies) do
-                enemySpeed = 100
+                enemySpeed = 150
                 enemy.y = enemy.y + enemySpeed * dt
                 if enemy.y > love.graphics.getHeight() then
                         table.remove(enemies, i)
