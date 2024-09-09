@@ -78,6 +78,11 @@ function love.update(dt)
                                 bulletTimer = 0.3
                         end
                 end
+                --치트: 난이도 즉시 최대
+                if love.keyboard.isDown("6") then
+                        difficulty = maxDifficulty
+                end
+
         end
 
         --발사 타이머
