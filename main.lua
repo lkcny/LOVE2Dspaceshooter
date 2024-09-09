@@ -10,7 +10,7 @@ local score = 0
 local difficulty = 0
 local bomb = 0
 local bombCharge = 0
-
+local death = 0
 --폭탄 발사 콜백 함수
 function love.keyreleased(key)
         if playerVisible then
@@ -65,6 +65,17 @@ end
 
 function love.update(dt)
         -- 화살표 키 입력으로 이미지 이동
+
+        if love.keyboard.isDown("x") then
+                if not playerVisible then
+                        score = 0
+                        death = death + 1
+                        playerVisible = true
+                        x = love.graphics.getWidth() / 2 - catimg:getWidth() / 2
+                        y = love.graphics.getHeight() / 2 - catimg:getHeight() / 2
+                        end
+        end
+
         if playerVisible then
                 if love.keyboard.isDown("up") then
                         y = y - speed * dt 
