@@ -40,7 +40,7 @@ function love.load()
         windowWidth = love.graphics.getWidth()
         windowHeight = love.graphics.getHeight()
 
-        font = love.graphics.newFont(20)
+        font = love.graphics.newFont("PublicPixel-rv0pA.ttf",20)
         love.graphics.setFont(font)
 
         spaceimg = love.graphics.newImage("spaceimg.png")
@@ -184,7 +184,7 @@ function love.draw()
         --점수 표시
         love.graphics.setColor(1, 1, 1)
 
-        love.graphics.print("score:" .. score, love.graphics.getWidth() - 200, 10)
+        love.graphics.print("score:" .. score, love.graphics.getWidth() - 300, 10)
         love.graphics.print("BOMB:" .. bomb, love.graphics.getWidth() - 700, 10)
 
 end
