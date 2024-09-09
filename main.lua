@@ -8,7 +8,8 @@ local timer = 1
 local bulletTimer = 0.5
 local score = 0
 local difficulty = 0
-
+local bomb = 0
+local bombCharge = 0
 
 
 
@@ -67,7 +68,7 @@ function love.update(dt)
                         x = x + speed * dt 
                 end
                 --플레이어 캐릭터 위쪽에서 탄환 발사
-                if love.keyboard.isDown("space") then
+                if love.keyboard.isDown("z") then
                         love.audio.play(shootSound)
                         local bullet = {}
                         bullet.x = x + catimg:getWidth()/2
@@ -77,6 +78,22 @@ function love.update(dt)
                                 bulletTimer = 0.3
                         end
                 end
+                --폭탄 발사
+                function love.keyreleased(key)
+                        if playerVisible then
+                                if key == "space" then
+                                        if bomb > 0 then
+                                                bomb = bomb - 1
+                                                love.audio.play(exploSound)
+                                                score = score + #enemies*100
+                                                while #enemies ~= 0 do rawset(enemies, #enemies, nil) end
+
+                                        end
+                                end
+                        end
+                end
+
+
                 --치트
                 if love.keyboard.isDown("6") then
                         difficulty = maxDifficulty
@@ -86,6 +103,9 @@ function love.update(dt)
                 end
                 if love.keyboard.isDown("8") then
                         bulletSpeed = 500
+                end
+                if love.keyboard.isDown("9") then
+                        bomb = 3
                 end
 
         end
@@ -123,6 +143,14 @@ function love.update(dt)
                 timer = 1 - difficulty*0.04
         end
         
+        --점수가 bombCharge점 모일때마다 폭탄 추가
+        if bombCharge > 2000 then
+                if bomb < 4 then
+                        bomb = bomb + 1
+                        bombCharge = bombCharge - 2000
+                end
+        end
+
         -- 플레이어가 화면 밖으로 나가지 못하게 함: 플레이어 이미지의 좌표가 창의 x, y 좌표보다 클 경우 0으로 강제
         if x < 0 then
                 x = 0
@@ -135,6 +163,7 @@ function love.update(dt)
         elseif y + catimg:getHeight() > windowHeight then
                 y = windowHeight - catimg:getHeight()
         end
+
 
         -- 충돌 감지 함수 실행
         collisionCheck()
@@ -160,6 +189,7 @@ function love.draw()
         love.graphics.setColor(1, 1, 1)
 
         love.graphics.print("score:" .. score, love.graphics.getWidth() - 200, 10)
+        love.graphics.print("BOMB:" .. bomb, love.graphics.getWidth() - 700, 10)
 
 end
 
@@ -186,6 +216,7 @@ function collisionCheck()
                                 table.remove(enemies, i)
                                 table.remove(bullets, j)
                                 score = score + 100
+                                bombCharge = bombCharge + 100
                                 love.audio.play(sparkSound)
                                 end
                         end
