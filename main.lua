@@ -31,7 +31,7 @@ function love.load()
         --윈도우 타이틀
         love.window.setTitle("spess")
 
-        --사운드
+        --사운드 로딩
         shootSound = love.audio.newSource("shoot.wav", "static")
         shootSound:setVolume(0.9)
         exploSound = love.audio.newSource("explosion.wav", "static")
@@ -131,7 +131,7 @@ function love.update(dt)
         maxDifficulty = 24.5
         if difficulty < maxDifficulty then
                 difficulty = difficulty + dt
-                enemySpeed = enemySpeed + dt
+                enemySpeed = enemySpeed + dt*2
         end
         timer = timer - dt
         if timer <= 0 then
