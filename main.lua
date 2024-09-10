@@ -71,6 +71,9 @@ function love.update(dt)
                         score = 0
                         death = death + 1
                         playerVisible = true
+                        difficulty = 0
+                        enemySpeed = 150
+                        while #enemies ~= 0 do rawset(enemies, #enemies, nil) end
                         x = love.graphics.getWidth() / 2 - catimg:getWidth() / 2
                         y = love.graphics.getHeight() / 2 - catimg:getHeight() / 2
                         end
